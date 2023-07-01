@@ -11,26 +11,29 @@ let totalValue = 0;
 let valueToCalculate = 0;
 
 //Stores an identifier for the most recent operation
-let recentOperation = '0';
+let recentOperation = 0;
+
+let equalPressed = 0;
 
 //function used to perform operations
 function operation(lastButtionPress){
-    if (lastButtionPress = '0'){
-        totalValue += parseFloat(currentValue);
-    } else if (lastButtionPress = 'add'){
-        totalValue += parseFloat(currentValue);
-    }else if (lastButtionPress = 'minus'){
-        totalValue -= parseFloat(currentValue);
-    } else if (lastButtionPress = 'times'){
-        totalValue *= parseFloat(currentValue);
-    } else if (lastButtionPress = 'divide'){
-        totalValue /= parseFloat(currentValue);
-    }   
+    if (lastButtionPress == 0){
+      totalValue += parseFloat(currentValue);
+    }else if (lastButtionPress == 1){
+      totalValue += parseFloat(currentValue);
+    }else if (lastButtionPress == 2){
+      totalValue -= parseFloat(currentValue);
+    } else if (lastButtionPress == 3){
+      totalValue *= parseFloat(currentValue);
+    } else if (lastButtionPress == 4){
+      totalValue /= parseFloat(currentValue);
+    } 
+  }
+
+
+
    
-        
-   }
-   
-}
+
 
 // Get the number buttons
 const numberButtons = document.querySelectorAll('.calculator button');
@@ -56,19 +59,21 @@ const clearButton = document.getElementById('allClearButton');
 clearButton.addEventListener('click', () => {
     currentValue = '0';
     totalValue = 0;
-    recentOperation = '0';
+    recentOperation = 0;
     valueToCalculate = 0;
+    equalPressed = 0;
     display.textContent = currentValue;
   });
   
   const equalButton = document.getElementById('equalSign');
 
   equalButton.addEventListener('click', () => {
-    operation(recentOperation);
-    //totalValue += parseFloat(currentValue); 
+    operation(recentOperation); 
     currentValue = totalValue.toString();
-    display.textContent =  currentValue;
-    recentOperation = '0';
+    display.textContent = currentValue;
+    totalValue = 0;
+    recentOperation = 0;
+    equalPressed = 1;
   });
 
   const percentButton = document.getElementById('percentSign');
@@ -85,10 +90,9 @@ clearButton.addEventListener('click', () => {
 
   addButton.addEventListener('click', () => {
     operation(recentOperation);
-    //totalValue += parseFloat(currentValue);
     currentValue = '0'
     display.textContent = currentValue;
-    recentOperation = 'add';
+    recentOperation = 1;
   });
 
   const minusButton = document.getElementById('minusSign');
@@ -97,7 +101,7 @@ clearButton.addEventListener('click', () => {
     operation(recentOperation);
     currentValue = '0'
     display.textContent = currentValue;
-    recentOperation = 'minus';
+    recentOperation = 2;
   });
 
   const timesButton = document.getElementById('timesSign');
@@ -106,7 +110,7 @@ clearButton.addEventListener('click', () => {
     operation(recentOperation);
     currentValue = '0'
     display.textContent = currentValue;
-    recentOperation = 'times';
+    recentOperation = 3;
   });
 
   const divisionButton = document.getElementById('divisionSign');
@@ -115,6 +119,6 @@ clearButton.addEventListener('click', () => {
     operation(recentOperation);
     currentValue = '0'
     display.textContent = currentValue;
-    recentOperation = 'divide';
+    recentOperation = 4;
   });
   
