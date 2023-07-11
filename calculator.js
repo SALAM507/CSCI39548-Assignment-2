@@ -7,6 +7,8 @@ let currentValue = '0';
 // Varaible that will store the result
 let totalValue = 0;
 
+
+
 // Stores inbetween values
 let valueToCalculate = 0;
 
@@ -14,6 +16,20 @@ let valueToCalculate = 0;
 let recentOperation = 0;
 
 let equalPressed = 0;
+
+//function to perform factorials
+function factorial(num) {
+  if (num < 0) {
+    // Factorial is not defined for negative numbers
+    return "Error: Factorial is not defined for negative numbers";
+  } else if (num === 0) {
+    // Factorial of 0 is 1
+    return 1;
+  } else {
+    // Calculate factorial recursively
+    return num * factorial(num - 1);
+  }
+}
 
 //function used to perform operations
 function operation(lastButtionPress){
@@ -27,13 +43,10 @@ function operation(lastButtionPress){
       totalValue *= parseFloat(currentValue);
     } else if (lastButtionPress == 4){
       totalValue /= parseFloat(currentValue);
+    } else if (lastButtionPress == 5){
+      totalValue **= parseFloat(currentValue);
     } 
   }
-
-
-
-   
-
 
 // Get the number buttons
 const numberButtons = document.querySelectorAll('.calculator button');
@@ -122,3 +135,35 @@ clearButton.addEventListener('click', () => {
     recentOperation = 4;
   });
   
+  const factorialButton = document.getElementById('factorial');
+
+  factorialButton.addEventListener('click', () => {
+    valueToCalculate = factorial(parseFloat(currentValue));
+    currentValue = valueToCalculate.toString();
+    display.textContent = currentValue;
+  });
+
+  const naturalLogButton = document.getElementById('ln');
+
+  naturalLogButton.addEventListener('click', () => {
+    valueToCalculate = Math.log(parseFloat(currentValue));
+    currentValue = valueToCalculate.toString();
+    display.textContent = currentValue;
+  });
+
+  const LogButton = document.getElementById('log');
+
+  LogButton.addEventListener('click', () => {
+    valueToCalculate = Math.log10(parseFloat(currentValue));
+    currentValue = valueToCalculate.toString();
+    display.textContent = currentValue;
+  });
+
+  const powerButton = document.getElementById('power');
+
+  powerButton.addEventListener('click', () => {
+    operation(recentOperation);
+    currentValue = '0'
+    display.textContent = currentValue;
+    recentOperation = 5;
+  });
