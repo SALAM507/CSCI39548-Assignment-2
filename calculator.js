@@ -167,3 +167,11 @@ clearButton.addEventListener('click', () => {
     display.textContent = currentValue;
     recentOperation = 5;
   });
+
+  const radicalButton = document.getElementById('radical');
+
+  radicalButton.addEventListener('click', () => {
+    valueToCalculate = Math.sqrt(parseFloat(currentValue));
+    currentValue = valueToCalculate.toString();
+    display.textContent = currentValue;
+  });
