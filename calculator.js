@@ -175,3 +175,27 @@ clearButton.addEventListener('click', () => {
     currentValue = valueToCalculate.toString();
     display.textContent = currentValue;
   });
+
+  const sinButton = document.getElementById('sin');
+
+  sinButton.addEventListener('click', () => {
+    valueToCalculate = Math.sin(parseFloat(currentValue));
+    currentValue = valueToCalculate.toString();
+    display.textContent = currentValue;
+  });
+
+  const cosButton = document.getElementById('cos');
+
+  cosButton.addEventListener('click', () => {
+    valueToCalculate = Math.cos(parseFloat(currentValue));
+    currentValue = valueToCalculate.toString();
+    display.textContent = currentValue;
+  });
+
+  const tanButton = document.getElementById('tan');
+
+  tanButton.addEventListener('click', () => {
+    valueToCalculate = Math.tan(parseFloat(currentValue));
+    currentValue = valueToCalculate.toString();
+    display.textContent = currentValue;
+  });
